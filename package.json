@@ -1,0 +1,32 @@
+{
+  "name": "task_tracker",
+  "version": "1.0.0",
+  "description": "project for learning backend",
+  "main": "test.js",
+
+  "bin": {
+    "task-cli": "./test.js"
+  },
+
+  "scripts": {
+    "start": "node test.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nopewry/Task_Tracker.git"
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nopewry/Task_Tracker/issues"
+  },
+
+  "homepage": "https://github.com/Nopewry/Task_Tracker#readme",
+  "dependencies": {
+    "prompt": "^1.3.0"
+  }
+}
