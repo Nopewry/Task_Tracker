@@ -3,7 +3,7 @@ import writeFile from "../utils/writeFiles.js";
 import { generateNextId } from "../utils/generateId.js";
 import getTimestamp from "../utils/getTimestamp.js";
 
-async function addTask(description, status = "todo") {
+async function addTask(description, status) {
   const tasks = await readFile();
 
   const nextId = generateNextId(tasks);
