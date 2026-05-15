@@ -9,6 +9,8 @@ async function markStatus(id, status) {
 
   const task = getTaskById(id, tasks);
 
+  if (!task) return `Task not found (ID: ${id})`;
+
   task.status = status;
   task.updatedAt = timestamp;
 
@@ -16,4 +18,4 @@ async function markStatus(id, status) {
   return `Task update successfully (ID: ${id})`;
 }
 
-export { markStatus };
+export default markStatus;

@@ -6,7 +6,9 @@ async function listAll(id) {
 async function list(type) {
   const tasks = await readFile();
 
-  return tasks.filter((task) => task.status === type);
+  const list = tasks.filter((task) => task.status === type);
+
+  return list.length > 0 ? list : 'Task not found';
 }
 
 export { listAll, list };
