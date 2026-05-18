@@ -1,9 +1,9 @@
-import readFile from "../utils/readFiles.js";
-import writeFile from "../utils/writeFiles.js";
-import { generateNextId } from "../utils/generateId.js";
+import readFile from "../utils/readFile.js";
+import writeFile from "../utils/writeFile.js";
+import generateNextId from "../utils/generateId.js";
 import getTimestamp from "../utils/getTimestamp.js";
 
-async function addTask(description, status = "todo") {
+async function addTask(description, status) {
   const tasks = await readFile();
 
   const nextId = generateNextId(tasks);
@@ -17,7 +17,7 @@ async function addTask(description, status = "todo") {
     id: nextId,
     description: description,
     status: status,
-    createAt: timestamp,
+    createdAt: timestamp,
     updatedAt: null,
   });
 

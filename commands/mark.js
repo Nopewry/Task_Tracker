@@ -1,48 +1,21 @@
-import readFile from "../utils/readFiles.js";
-import writeFile from "../utils/writeFiles.js";
-import { getTaskById } from "../utils/generateId.js";
+import readFile from "../utils/readFile.js";
+import writeFile from "../utils/writeFile.js";
+import { getTaskById } from "../utils/taskUtils.js";
 import getTimestamp from "../utils/getTimestamp.js";
 
-async function markInProgress(id) {
+async function markStatus(id, status) {
   const tasks = await readFile();
   const timestamp = getTimestamp();
 
   const task = getTaskById(id, tasks);
 
-  task.status = 'in-progress';
+  if (!task) return `Task not found (ID: ${id})`;
+
+  task.status = status;
   task.updatedAt = timestamp;
 
   await writeFile(tasks);
   return `Task update successfully (ID: ${id})`;
 }
 
-async function markDone(id) {
-  const tasks = await readFile();
-  const timestamp = getTimestamp();
-
-  const task = getTaskById(id, tasks);
-
-  task.status = 'done';
-  task.updatedAt = timestamp;
-
-  await writeFile(tasks);
-  return `Task update successfully (ID: ${id})`;
-}
-
-
-async function markTodo(id) {
-  const tasks = await readFile();
-  const timestamp = getTimestamp();
-
-  const task = getTaskById(id, tasks);
-
-  task.status = 'todo';
-  task.updatedAt = timestamp;
-
-  await writeFile(tasks);
-  return `Task update successfully (ID: ${id})`;
-}
-
-
-
-export { markInProgress, markDone, markTodo };
+export default markStatus;

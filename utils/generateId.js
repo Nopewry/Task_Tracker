@@ -8,14 +8,4 @@ function generateNextId(tasks) {
   return nextId;
 }
 
-function getTaskById(id, tasks) {
-  if(!id || !tasks) return null;
-
-  return tasks.find((task) => task.id === parseInt(id));
-}
-
-function getTaskIndexById(tasks, id) {
-  return tasks.findIndex((task) => task.id === parseInt(id));
-}
-
-export { generateNextId, getTaskById, getTaskIndexById };
+export default generateNextId;

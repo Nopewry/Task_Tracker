@@ -1,52 +1,47 @@
-#!/usr/bin/env node
-import addTask from "./commands/add.js";
-import updateTask from "./commands/update.js";
-import deleteTask from "./commands/delete.js";
-import { markInProgress, markDone, markTodo } from "./commands/mark.js";
-import { listAll, list } from "./commands/list.js";
+import addHandler from "./handler/addHandler.js";
+import updateHandler from "./handler/updateHandler.js";
+import deleteHandler from "./handler/deleteHandler.js";
+import listHandler from "./handler/listHandler.js";
+import markHandler from "./handler/markHandler.js";
+
+import getParser from "./parser/resolveParser.js";
 
 const args = process.argv.slice(2);
 const command = args[0];
 
-if (command === "add") {
-  const description = args[1];
-  console.log(await addTask(description, "todo"));
+const handlers = {
+  add: addHandler,
+  update: updateHandler,
+  delete: deleteHandler,
+  mark: markHandler,
+  list: listHandler
 }
 
-if (command === "update") {
-  const id = args[1];
-  const desc = args[2];
-  const status = args[3] ? args[3] : undefined;
+const parser = getParser(command);
 
-  console.log(await updateTask(id, desc, status));
-}
 
-if (command === 'delete') {
-  const id = args[1];
-  console.log(await deleteTask(id));
-}
+if (!parser) {
+  console.log("Command not found");
+  process.exit(1);
+};
 
-if (command === 'mark-in-progress') {
-  const id = args[1];
-  markInProgress(id);
-}
+const prasedData = parser(args);
 
-if (command === 'mark-done') {
-  const id = args[1];
-  markDone(id);
-}
 
-if (command === 'mark-todo') {
-  const id = args[1];
-  markTodo(id);
-}
+if (!prasedData) {
+  console.log("something went wrong");
+  process.exit(1);
+};
 
-if (command === 'list') {
-  const type = args[1]
-  if (!type) {
-    console.log(await listAll());  
-  } else [
-    console.log(await list(type))
-  ]
-  
-}
+// console.log(prasedData.payload.status);
+
+const handler = handlers[prasedData.action];
+
+if (!handler) {
+  console.log("Handler not found");
+  process.exit(1);
+};
+
+const result = await handler(prasedData.payload);
+
+console.log(result);
