@@ -1,6 +1,6 @@
-import readFile from "../utils/readFiles.js";
-import writeFile from "../utils/writeFiles.js";
-import { getTaskById } from "../utils/generateId.js";
+import readFile from "../utils/readFile.js";
+import writeFile from "../utils/writeFile.js";
+import { getTaskById } from "../utils/taskUtils.js";
 import getTimestamp from "../utils/getTimestamp.js";
 
 async function markStatus(id, status) {

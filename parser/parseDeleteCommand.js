@@ -1,8 +1,12 @@
-function parseDeleteTask(params) {
+function parseDeleteTask(args) {
+
+  // delete command require id
+  if (!args[1]) return null;
+
   return {
     action: "delete",
     payload: {
-      id: params[1]
+      id: args[1]
     }
   }
 }

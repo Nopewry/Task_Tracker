@@ -1,4 +1,8 @@
-function parseAdd(args) {
+function parseAddTask(args) {
+
+  // add command require description
+  if (!args[1]) return null;
+
   return {
     action: "add",
     payload: {
@@ -8,4 +12,4 @@ function parseAdd(args) {
   }
 }
 
-export default parseAdd;
+export default parseAddTask;

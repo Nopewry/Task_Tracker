@@ -19,12 +19,19 @@ const handlers = {
 
 const parser = getParser(command);
 
+
 if (!parser) {
   console.log("Command not found");
   process.exit(1);
 };
 
 const prasedData = parser(args);
+
+
+if (!prasedData) {
+  console.log("something went wrong");
+  process.exit(1);
+};
 
 // console.log(prasedData.payload.status);
 

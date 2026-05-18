@@ -1,4 +1,8 @@
-function parseList(args) {
+function parseMarkTask(args) {
+
+  // mark command require id and status
+  if (!args[0] || !args[1]) return null;
+
   return {
     action: "mark",
     payload: {
@@ -8,4 +12,4 @@ function parseList(args) {
   }
 }
 
-export default parseList;
+export default parseMarkTask;

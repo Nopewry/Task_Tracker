@@ -5,8 +5,6 @@ async function markHandler(parsedData) {
     parsedData.id,
     parsedData.status
   );
-  // console.log(`parsedData.id: ${parsedData.id}`);
-  // console.log(`parsedData.status: ${parsedData.status}`);
 }
 
 export default markHandler;

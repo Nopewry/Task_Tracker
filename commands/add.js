@@ -1,6 +1,6 @@
-import readFile from "../utils/readFiles.js";
-import writeFile from "../utils/writeFiles.js";
-import { generateNextId } from "../utils/generateId.js";
+import readFile from "../utils/readFile.js";
+import writeFile from "../utils/writeFile.js";
+import generateNextId from "../utils/generateId.js";
 import getTimestamp from "../utils/getTimestamp.js";
 
 async function addTask(description, status) {
@@ -17,7 +17,7 @@ async function addTask(description, status) {
     id: nextId,
     description: description,
     status: status,
-    createAt: timestamp,
+    createdAt: timestamp,
     updatedAt: null,
   });
 

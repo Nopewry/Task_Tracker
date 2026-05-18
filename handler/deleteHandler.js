@@ -1,6 +1,6 @@
 import deleteTask from "../commands/delete.js";
 
-async function deleteHandler(parsedData) {
+async function deleteHandler(parsedData) {  
   return await deleteTask(
     parsedData.id,
   );

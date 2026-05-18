@@ -1,4 +1,14 @@
-function parseList(args) {
+function parseListTask(args) {
+
+  // list that allowed
+  const allowedStatusesList = [
+    'in-progress',
+    'done',
+    'todo'
+  ]
+
+  if (args[1] && !allowedStatusesList.includes(args[1])) return null
+
   return {
     action: "list",
     payload: {
@@ -7,4 +17,4 @@ function parseList(args) {
   }
 }
 
-export default parseList;
+export default parseListTask;
